@@ -2,12 +2,15 @@
 scripts to save a bit of time when setting up servers\
 as many commands for admin need sudo run all scripts \
 with sudo \
-for first config typing th password every time is a pain\
+for first config typing the password every time is a pain\
 run this command first to allow sudo without password\
 
 echo "${USER} ALL = (root) NOPASSWD:ALL"  | sudo tee -a  /etc/sudoers.d/${USER} > /dev/null
 remove when finished\
 sudo rm /etc/sudoers.d/${USER}
+
+next set default editor to vim\
+sudo update-alternatives --config editor
 
 ## scripts
 git_admin_init.sh -- configure git and get the admin files it just does the git setup below\
