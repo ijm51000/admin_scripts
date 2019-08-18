@@ -1,6 +1,6 @@
 #! /bin/bash
 git config --global user.name "ijm51000"
-git config --global user.email "ianmac51@gmail.com"
+git config --global user.email "@gmail.com"
 git config --global color.ui true
 git config --global core.editor vim
 ssh-keygen -N "" -f ~/.ssh/rsa_$(hostnamectl --static)_git -t rsa -C "ijm51000@github"
