@@ -1,5 +1,15 @@
-# admin_scripts
+# admin scripts
 scripts to save a bit of time when setting up servers\
+as many commands for admin need sudo run all scripts \
+with sudo \
+for first config typing th password every time is a pain\
+run this command first to allow sudo without password\
+
+echo "${USER} ALL = (root) NOPASSWD:ALL"  | sudo tee -a  /etc/sudoers.d/${USER} > /dev/null
+remove when finished\
+sudo rm /etc/sudoers.d/${USER}
+
+## scripts
 apache_create.sh -- install & configure apache on ubuntu\
 apache_lets_encrypt.sh -- install & configure lets encypt for apache
 
