@@ -1,5 +1,7 @@
 # admin_scripts
 scripts to save a bit of time when setting up servers\
+apache_create.sh -- install & configure apache on ubuntu\
+apache_lets_encrypt.sh -- install & configure lets encypt for apache
 
 ## setup git for first time use on new host
 git config --global user.name "ijm51000"\
@@ -14,5 +16,7 @@ cd admin_scripts\
 git init\
 git remote add origin git@github.com:ijm51000/admin_scripts\
 git pull origin master\
-sudo apache_create.sh my.domain.com\
+
+## usage
+sudo  apache_create.sh my.domain.com\
 sudo apache_lets_encrypt.sh my.domain.com me@me.com
