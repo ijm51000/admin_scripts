@@ -6,3 +6,4 @@ apt install -y  python-certbot-apache
 certbot --apache -d ${DOMAIN} -d ${DOMAIN} --non-interactive --agree-tos -m ${EMAIL}
 echo "testing cert renewal"
 certbot renew --dry-run
+curl https://${DOMAIN}

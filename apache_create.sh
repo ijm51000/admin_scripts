@@ -1,9 +1,13 @@
 #! /bin/bash
 DOMAIN=$1
-mkdir -p /var/www/${DOMAIN}
-chown -R $USER:$USER /var/www/${DOMAIN}
-chmod -R 755 /var/www/${DOMAIN}
-cat << EOF > /var/www/${DOMAIN}/index.html 
+APACHE_LOG_DIR=/var/log/apache
+DOC_ROOT=/var/www/${DOMAIN}
+
+mkdir -p ${APACHE_LOG_DIR}
+mkdir -p ${DOC_ROOT}
+chown -R $USER:$USER ${DOC_ROOT}
+chmod -R 755 ${DOC_ROOT}
+cat << EOF > ${DOC_ROOT}/index.html 
 <html>
     <head>
         <title>Welcome to ${DOMAIN}!</title>
@@ -19,12 +23,12 @@ cat << EOF > /etc/apache2/sites-available/${DOMAIN}.conf
     ServerAdmin webmaster@localhost
     ServerName ${DOMAIN}
     ServerAlias ${DOMAIN}
-    DocumentRoot /var/www/${DOMAIN}
+    DocumentRoot ${DOC_ROOT}
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOF
-a2ensite ${DOMAIN}.conf
+a2ensite "${DOMAIN}.conf"
 a2dissite 000-default.conf
 
 if apache2ctl configtest; then
@@ -32,4 +36,4 @@ if apache2ctl configtest; then
 else
     echo "Apache config test failed"
 fi
-
+curl http://${DOMAIN}
