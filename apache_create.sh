@@ -2,7 +2,8 @@
 DOMAIN=$1
 APACHE_LOG_DIR=/var/log/apache
 DOC_ROOT=/var/www/${DOMAIN}
-
+apt update
+apt install -y apache2
 mkdir -p ${APACHE_LOG_DIR}
 mkdir -p ${DOC_ROOT}
 chown -R $USER:$USER ${DOC_ROOT}
