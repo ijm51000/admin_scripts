@@ -14,6 +14,5 @@ cd admin_scripts\
 git init\
 git remote add origin git@github.com:ijm51000/admin_scripts\
 git pull origin master\
-
-sudo apache_create.sh my.domain.com
-sudo apache_lets_encrypt.sh my.domain.com me@me.com
+sudo apache_create.sh my.domain.com\
+sudo apache_lets_encrypt.sh my.domain.com me@me.com\
