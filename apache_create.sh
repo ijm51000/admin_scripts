@@ -2,11 +2,12 @@
 DOMAIN=$1
 APACHE_LOG_DIR=/var/log/apache
 DOC_ROOT=/var/www/${DOMAIN}
-apt update
-apt install -y apache2
-mkdir -p ${APACHE_LOG_DIR}
-mkdir -p ${DOC_ROOT}
-chown -R $USER:$USER ${DOC_ROOT}
+sudo_user=$(who am i | awk '{print $1}')
+sudo apt update
+sudo apt install -y apache2
+sudo mkdir -p ${APACHE_LOG_DIR}
+sudo mkdir -p ${DOC_ROOT}
+sudo chown -R ${sudo_user}:${sudo_user} ${DOC_ROOT}
 chmod -R 755 ${DOC_ROOT}
 cat << EOF > ${DOC_ROOT}/index.html 
 <html>
@@ -29,8 +30,8 @@ cat << EOF > /etc/apache2/sites-available/${DOMAIN}.conf
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOF
-a2ensite "${DOMAIN}.conf"
-a2dissite 000-default.conf
+sudo a2ensite "${DOMAIN}.conf"
+sudo a2dissite 000-default.conf
 
 if apache2ctl configtest; then
     sudo systemctl restart apache2
