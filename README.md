@@ -5,7 +5,7 @@ scripts to save a bit of time when setting up servers\
 git config --global user.name "ijm51000"\
 git config --global user.email "@gmail.com"\ 
 git config --global color.ui true\
-git config --global core.editor vim\ 
+git config --global core.editor vim\
 ssh-keygen -t rsa -C "@gmail.com"\
 **add the key here on GH account -> settings -> on the left ssh keys\
 test**\
