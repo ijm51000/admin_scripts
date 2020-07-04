@@ -12,6 +12,7 @@ sudo systemctl stop activemq.service
 sudo rm -rf /usr/java/az_jdk-8
 sudo rm -rf /apps/u01/activemq
 sudo rm -rf /apps/u01/mule
+sudo rm -rf /logs
 sudo userdel -r uat1
 #rm -f ${HOME}/amazon-corretto-8-x64-linux-jdk.tar.gz 
 #rm -f ${HOME}/apache-activemq-5.13.4-bin.tar.gz
@@ -55,7 +56,13 @@ Group=uat1
 [Install]
 WantedBy=multi-user.target
 EOF
+sudo rm -rf /logs
+sudo mkdir -p /logs/u01/activemq
+sudo -rf /apps/u01/activemq/data
+sudo ln -s  /apps/u01/activemq/data /logs/u01/activemq
+sudo chown -R uat1:uat1 /logs/u01
 sudo systemctl enable activemq.service
+
 sudo systemctl start activemq.service
 # sudo -u uat1 /apps/u01/activemq/bin/linux-x86-64/activemq start
 # create dummy mule environment
