@@ -16,7 +16,7 @@ sudo update-alternatives --config editor
 git_admin_init.sh -- configure git and get the admin files it just does the git setup below\
 apache_create.sh -- install & configure apache on ubuntu\
 apache_lets_encrypt.sh -- install & configure lets encypt for apache
-
+amq_install.ssh install -- Apache ActiveMQ as service and create some dummy directories this is to test ansible playbook to upgrade ActiveMQ
 
 ## setup git for first time use on new host
 git config --global user.name "ijm51000"\
@@ -36,3 +36,5 @@ git pull origin master
 sudo git_admin_init.sh # you need to edit username etc for git\
 sudo  apache_create.sh my.domain.com\
 sudo apache_lets_encrypt.sh my.domain.com me@me.com
+
+
