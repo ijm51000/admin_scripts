@@ -31,7 +31,7 @@ log "Install nifi & nifi toolkit ${version} single user system on ${HOSTNAME}"
 settle_time=60  #Time to settle - nifi unpacks over 1gb so slow systems will need longer
 os_user=$(who am i | awk '{print $1}') #use user that called script     
 network=192.168.0  #network regex
-password=Deepspacenine101 
+password=16charatersOrMore
 sensitive_props_key=${password}
 nifi_user=${os_user} #I want the same user 
 
